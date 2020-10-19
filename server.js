@@ -9,10 +9,11 @@ const userRoutes = require('./routes/userRoutes')
 dotenv.config()
 connectDB()
 const server = express()
+server.use(express.json())
 
 // Routes
 server.use('/api/books', bookRoutes)
-// server.use('/api/users', userRoutes)
+server.use('/api/users', userRoutes)
 
 // MiddleWares:
 server.use(notFound)
