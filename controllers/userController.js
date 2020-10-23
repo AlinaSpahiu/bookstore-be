@@ -90,21 +90,20 @@ const registerUser = asyncHandler(async (req, res) => {
 //    GET: /api/users/profile
 const getUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id)
-
+  
     if (user) {
-
-        res.json({
-            _id: user._id,
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            isAdmin: user.isAdmin,
-        })
+      res.json({
+        _id: user._id,
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      })
     } else {
-        res.status(404)
-        throw new Error('User not found!')
+      res.status(404)
+      throw new Error('User not found')
     }
-})
+  })
 
 
 // 6. UPDATE USER PROFILE:
