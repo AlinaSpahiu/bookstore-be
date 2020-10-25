@@ -28,6 +28,7 @@ const getUserById = asyncHandler(async (req, res) => {
 
 // 3. Auth user && get Token
 //    POST: /api/users/login
+// http://localhost:5001/api/users/login
 const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body
 
@@ -89,20 +90,21 @@ const registerUser = asyncHandler(async (req, res) => {
 // 5. GET USER PROFILE:
 //    GET: /api/users/profile
 const getUserProfile = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user._id)
+  res.send('Success')
+    // const user = await User.findById(req.user._id)
   
-    if (user) {
-      res.json({
-        _id: user._id,
-        name: user.name,
-        surname: user.surname,
-        email: user.email,
-        isAdmin: user.isAdmin,
-      })
-    } else {
-      res.status(404)
-      throw new Error('User not found')
-    }
+    // if (user) {
+    //   res.json({
+    //     _id: user._id,
+    //     name: user.name,
+    //     surname: user.surname,
+    //     email: user.email,
+    //     isAdmin: user.isAdmin,
+    //   })
+    // } else {
+    //   res.status(404)
+    //   throw new Error('User not found')
+    // }
   })
 
 
