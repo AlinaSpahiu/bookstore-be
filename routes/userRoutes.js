@@ -28,13 +28,14 @@ router.post('/', registerUser)
 
 // 5. GET USER PROFILE:
 //    GET: /api/users/profile
-router.get('/profile', protect, getUserProfile)
+// router.get('/profile', getUserProfile)
+router.route('/profile').get(protect, getUserProfile)
 
 // 6. UPDATE USER PROFILE:
 // //    PUT: /api/users/profile
 // router.put('/profile', protect, updateUserProfile)
 
-router.route('/profile').get(protect, getUserProfile)
+// router.route('/profile').get(protect, getUserProfile)
 
 
 module.exports = router
