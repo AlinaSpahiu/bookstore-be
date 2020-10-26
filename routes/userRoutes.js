@@ -6,36 +6,24 @@ const {authUser, getAllUsers, getUserById, getUserProfile, registerUser, updateU
 const router = express.Router()
 
 
-// 1. GET all users:
-//    GET: /api/users
-router.get('/', getAllUsers)
-
-
-// 2. GET only one User by ID:
-//    GET: /api/users/:id
-router.get('/:id', getUserById)
-
-
-// 3. Log-in an existent user:
-//    POST: /api/users/login
+// Users login: http://localhost:5002/api/user/login
 router.post('/login', authUser)
 
-
-// 4. Register a new User
-//    POST: /api/users/
-router.post('/', registerUser)
-
-
-// 5. GET USER PROFILE:
-//    GET: /api/users/profile
-// router.get('/profile', getUserProfile)
+// Gets User profile: http://localhost:5002/api/users/profile
 router.route('/profile').get(protect, getUserProfile)
 
-// 6. UPDATE USER PROFILE:
-// //    PUT: /api/users/profile
-// router.put('/profile', protect, updateUserProfile)
+// Update User Profile:
+router.route('/profile').put(protect, updateUserProfile)
 
-// router.route('/profile').get(protect, getUserProfile)
+// Create(POST) a new User:
+router.route('/').post( registerUser)
+
+// Delete User:
+router
+.route('/:id')
+.get(protect,  getUserById)
+
+
 
 
 module.exports = router
