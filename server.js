@@ -5,6 +5,7 @@ const connectDB = require('./config/db')
 const{ notFound, errorHandler} = require('./middleware/errorMiddleware')
 const bookRoutes = require('./routes/bookRoutes')
 const userRoutes = require('./routes/userRoutes')
+const orderRoutes = require('./routes/orderRoutes')
 
 
 dotenv.config()
@@ -16,6 +17,7 @@ server.use(express.json())
 // Routes
 server.use('/api/books', bookRoutes)
 server.use("/api/users", userRoutes)
+server.use("/api/orders", orderRoutes)
 
 // MiddleWares:
 server.use(notFound)
