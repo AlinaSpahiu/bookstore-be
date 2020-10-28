@@ -19,6 +19,8 @@ server.use('/api/books', bookRoutes)
 server.use("/api/users", userRoutes)
 server.use("/api/orders", orderRoutes)
 
+server.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
+
 // MiddleWares:
 server.use(notFound)
 
